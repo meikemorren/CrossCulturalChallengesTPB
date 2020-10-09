@@ -1,0 +1,110 @@
+Country;POW;IC;MASC;UA;LSO;INDUL 
+Albania;90;20;80;70;61;15
+Angola;83;18;20;60;15;83
+Arabic countries;80;38;53;68;;
+Argentina;49;46;56;86;;
+Australia;36;90;61;51;21;71
+Austria;11;55;79;70;31;
+Bangladesh;80;20;55;60;40;
+Belgium;65;75;54;94;82;57
+Bhutan;;52;;;;
+Bolivia;;;;;;
+Brazil;69;38;49;76;44;59
+Bulgaria;70;30;40;85;69;16
+Burkina Faso;;15;;;;
+Canada;39;80;52;48;36;68
+Cape Verde;;20;;;;
+Chile;63;23;28;86;31;68
+China;80;20;66;30;87;24
+Colombia;67;13;64;80;;
+Costa Rica;35;15;21;86;;
+Cyprus;;;;;;70
+Czechia;57;58;57;74;70;29
+Denmark;18;74;16;23;35;70
+East Africa;64;27;53;52;;
+Ecuador;78;8;63;67;;
+Egypt;;25;;;;
+El Salvador;;19;;;;
+England;;;;;;
+Ethiopia;;20;;;;
+Estonia;40;60;30;60;;
+Fiji;;14;;;;
+Finland;33;63;26;59;38;57
+France;68;71;43;86;63;48
+Georgia;;;;;;
+Germany;35;67;66;65;83;40
+Ghana;;15;;;4;72
+United Kingdom;35;89;66;35;51;69
+Greece;60;35;57;112;45;50
+Guatemala;95;6;37;101;;
+Honduras;;20;;;;
+Hong Kong;68;25;57;29;96;
+Hungary;46;80;88;82;50;
+Iceland;;60;;;;
+India;77;48;56;40;51;26
+Indonesia;78;14;46;48;;
+Iran;58;41;43;59;14;40
+Iraq;;30;;;;
+Ireland;28;70;68;35;24;65
+Israel;13;54;47;81;38;
+Italy;50;76;70;75;61;30
+Jamaica;45;39;68;13;;
+Japan;54;46;95;92;88;42
+Jordan;;30;;;;
+Kazakhstan;;;;;;
+Kenia;;25;;;;
+South Korea;60;18;39;85;100;29
+Kuwait;90;25;40;80;;
+Latvia;44;70;9;63;69;13
+Lebanon;75;40;65;50;14;25
+Lithuania;42;60;19;65;82;16
+Lybia;;38;;;;
+Luxemburg;40;60;50;70;64;56
+Macedonia;;;;;62;35
+Malaysia;104;26;50;36;41;57
+Malta;56;59;47;96;;
+Mexico;81;30;69;82;24;97
+Morocco;70;46;53;68;14;25
+Mozambique;;15;;;;
+Namibia;;30;;;;
+Nepal;;30;;;;
+Netherlands;38;80;14;53;67;68
+New Zealand;22;79;58;49;33;75
+Nigeria;80;30;60;55;13;84
+Norway;31;69;8;50;35;55
+Pakistan;55;14;50;70;0;
+Panama;95;11;44;86;;
+Peru;64;16;42;87;;
+Philippines;94;32;64;44;19;
+Poland;68;60;64;93;32;
+Portugal;63;27;31;104;30;
+Qatar;;;;;;
+Romania;90;30;42;90;;
+Russia;93;39;36;95;81;20
+Saudi Arabia;95;25;60;80;36;52
+Serbia;;25;;;;
+Sierra Leone;;20;;;;
+Singapore;74;20;48;8;48;
+Slovenia;;27;;;;
+South Africa;49;65;63;49;;
+Salvador;66;19;40;94;;
+Slovakia;104;52;110;51;38;
+Sri Lanka;;35;;;;
+Spain;57;51;42;86;48;44
+Surinam;85;47;37;92;;
+Sweden;31;71;5;29;53;78
+Switzerland;34;68;70;58;74;66
+Syria;80;35;52;60;30;
+Taiwan;58;17;45;69;93;49
+Thailand;64;20;34;64;56;
+Trinidad;47;16;58;55;;
+Turkey;66;37;45;85;46;49
+Uruguay;61;36;38;100;26;53
+United Arab Emirates;;25;;;;
+USA;40;91;62;46;26;68
+Venezuela;81;12;73;76;;
+Vietnam;70;20;40;30;80;
+West Africa;77;2;46;54;16;
+Yugoslavia;76;27;21;88;;
+Zambia;60;35;40;50;30;42
+Zimbabwe;;;;;;
