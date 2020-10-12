@@ -52,6 +52,7 @@ round(results[c(1,3,6:9),],3)
 library(metafor)
 
 tiff("output/figures/funnel-plots.tiff", width = 10, height = 10, units = 'in', res = 300)
+
 ### set up 2x2 array for plotting
 par(mfrow=c(2,3), tcl=-0.5, family="serif", mai=c(0.8,0.5,0.5,0.3))
 

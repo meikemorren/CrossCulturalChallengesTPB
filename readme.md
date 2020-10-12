@@ -3,7 +3,7 @@
 
 This repository contains all the data and code that is used to produce the analyses in *The Cross-Cultural Challenges of Integrating Personal Norms into the Theory of Planned Behavior: A Meta-Analytic Structural Equation Modeling (MASEM) Approach*.
 
-We conducted a meta-analysis on Theory of Planned Behavior (TPB) in the field of environmentally friendly behavior. Additionally, we have added personal norms to the framework to explore how they should be integrated with TPB. During the data collection, we tried to include studies from as many countries as possible so that we could make valid cross-cultural comparisons. This led to a dataset of 257 samples (described in 233 articles) from 50 countries. For more information on the data collection, please contact meike.morren@vu.nl.
+We conducted a meta-analysis on Theory of Planned Behavior (TPB) in the field of environmentally friendly behavior. Additionally, we have added personal norms to the framework to explore how they should be integrated with TPB. During the data collection, we tried to include studies from as many countries as possible so that we could make valid cross-cultural comparisons. This led to a dataset of 255 samples (described in 231 articles) from 50 countries. For more information on the data collection, please contact meike.morren@vu.nl.
 
 
 ## Folders
@@ -34,4 +34,4 @@ This folder contains two subfolders: Tables and Figures. If you run the code, th
 
 ## How to use?
 
-You might benefit from our efforts in collecting 257 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory in the main folder!
+You might benefit from our efforts in collecting 255 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory in the main folder!

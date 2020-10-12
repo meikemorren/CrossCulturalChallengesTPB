@@ -13,17 +13,12 @@ colnames(data) <- c("ID","label","Country","N","alpha","EC","B","IB","WTP","ATT"
 data$Country<-as.character(data$Country)
 data$label<-as.character(data$label)
 data[data$Country=="Scotland" | data$Country =="United Kingdom" | data$Country =="Great Britain"| data$Country =="England","Country"] <- as.character("UK")
-
 data$label[data$label=="Mangafi? et al (2017)"] <- "Mangafić et al (2017)" # check!
 data$label[data$label=="Whitmarsh & ONeill (2010)"]<-"Whitmarsh & O'Neill (2010)"
-data$label[data$label=="Zhu et al (2020)"] <- c(rep("Zhu et al (2020a)",12),rep("Zhu et al (2020b)",12))
-data$label[data$label=="Yang et al (2020)"] <- c(rep("Yang et al (2020a)",12),rep("Yang et al (2020b)",12))
-data$label[data$label=="Xu et al (2020)"] <- c(rep("Xu et al (2020a)",12),rep("Xu et al (2020b)",12))
-data$label[data$label=="Wang et al (2020)"] <- c(rep("Wang et al (2020a)",12),rep("Wang et al (2020b)",12),rep("Wang et al (2020c)",12))
 
 ### inspect
-length(unique(data$ID)) # 257
-length(unique(data$label)) # 233 
+length(unique(data$ID)) # 255
+length(unique(data$label)) # 231 
 length(unique(data$Country)) # 50
 
 ########################################################################################################################
@@ -88,9 +83,9 @@ for(i in seq(1, nrow(WIDEdat))) if(15 == sum(is.na(WIDEdat[i,5:ncol(WIDEdat)])))
 
 ### inspect
 length(unique(WIDEdat$Country)) # 50
-sum(WIDEdat$N, na.rm=T) # 130979
-nrow(WIDEdat) # 257
-length(unique(WIDEdat$label)) # 233 voor 5 TPB variables + PN
+sum(WIDEdat$N, na.rm=T) # 130354
+nrow(WIDEdat) # 255
+length(unique(WIDEdat$label)) # 231 voor 5 TPB variables + PN
 
 # For classical TPB (without personal norms) we have to create another datafile:
 varnames <- c("B","IB","ATT","PBC","SN")
@@ -106,8 +101,9 @@ WIDEdat_TPB<-WIDEdat_TPB[-missings,] # delete missings
 
 ### inspect
 unique(WIDEdat_TPB$Country) # 50
-sum(WIDEdat_TPB$N, na.rm=T) # 121845
-nrow(WIDEdat_TPB) # 248
-length(unique(WIDEdat_TPB$label)) # 224 voor 5 TPB variables
+sum(WIDEdat_TPB$N, na.rm=T) # 121220
+nrow(WIDEdat_TPB) # 246
+length(unique(WIDEdat_TPB$label)) # 222 voor 5 TPB variables
 
-rm(i, data) # remove everthing that is not necessary
+rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB",
+                        "corrnames","varnames")))

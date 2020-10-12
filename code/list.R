@@ -49,7 +49,6 @@ createList <- function(data, varnames, covariates) # exclude is not really an ar
     }
     
     id <- length(list1) + 1
-    print(length(list1))
     list1[[id]] <- TPBma
     names(list1)[id] <- as.character(data[i,"label"])
     
@@ -83,8 +82,8 @@ createList <- function(data, varnames, covariates) # exclude is not really an ar
 ### create list
 # ordering is fixed otherwise createList does not work
 varnames <- c("B","IB","ATT","PBC","PN","SN") 
-covariates <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
-dataList <- createList(WIDEdat, varnames, covariates)
+values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
+dataList <- createList(WIDEdat, varnames, values)
 
 
 ### inspect
@@ -106,18 +105,20 @@ for(i in seq(1,nrow(WIDEdat))){
     WIDEdat_TPB[WIDEdat_TPB$ID==WIDEdat$ID[i],15:ncol(WIDEdat_TPB)] <- 
       WIDEdat[WIDEdat$ID==WIDEdat$ID[i],20:ncol(WIDEdat)]
   }else{
+    # print ID's in which no TPB correlation
     print(WIDEdat$ID[i])
     next
   } 
 }
 
 ### create list
-dataList_TPB <- createList(WIDEdat_TPB, c("B","IB","ATT","PBC","SN"), covariates)
+dataList_TPB <- createList(WIDEdat_TPB, c("B","IB","ATT","PBC","SN"), values)
 
 ### inspect
-sum(dataList_TPB$N) # 121845
-length(dataList_TPB$Data) # number of matrixes 248
-unique(names(dataList_TPB$Data)) # 224 articles
+sum(dataList_TPB$N) # 121220
+length(dataList_TPB$Data) # number of matrixes 246
+unique(names(dataList_TPB$Data)) # 222 articles
 nrow(table(dataList_TPB$Country)) # number of countries 50
 
-rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))
+rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB","values",
+                        "Hofstede","globe")))

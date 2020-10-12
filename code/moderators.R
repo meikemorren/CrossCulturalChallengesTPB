@@ -131,7 +131,6 @@ for(c in unique(WIDEdat$Country)){
   rows<-WIDEdat[WIDEdat$Country==c,]
   if(nrow(globe[globe$Country==c,2:19])!=0){
     for(r in seq(1,nrow(rows))){
-      print(r)
       rows[r,26:43]<-globe[globe$Country==c,2:19]
     }
   }  
@@ -158,4 +157,6 @@ WIDEdat[WIDEdat$ID==44,26:43]<- globe[globe$Country=="Germany (EAST)",2:ncol(glo
 
 # The following studies are from West Germany (this is value assigned to "Germany"): 
 # 42, 43, 47, 63, 72, 73, 98 (researchers are from that area)
-rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","corrnames","varnames","missings","long2wide","createList")))
+rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB",
+                        "corrnames","varnames",
+                        "Hofstede","globe")))
