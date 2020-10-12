@@ -1,3 +1,4 @@
+# first run preparation.R
 ############################################################################################
 #############################  hofstede ####################################################
 ############################################################################################
@@ -8,6 +9,8 @@ Hofstede$Country<-as.character(Hofstede$Country)
 # added, estimated by hofstede
 Hofstede<-rbind(Hofstede,c("Bosnia and Herzegovina",90,22,48,87,70,44)) 
 Hofstede[Hofstede$Country=="Qatar",2:5] <-c(93, 25, 55, 80) 
+Hofstede[Hofstede$Country=="Bangladesh",2:5] <-c(93, 25, 55, 80) 
+
 Hofstede[,2:7]<-apply(Hofstede[,2:7], 2, as.numeric)
 
 # adjust country names to the ones we already have:
@@ -58,14 +61,17 @@ globe$Country[globe$Country=="England"] <- "UK"
 globe$Country[globe$Country=="IRAN"] <- "Iran"
 globe$Country[globe$Country=="Germany (WEST)"] <- "Germany" 
 
+# check missing values
+# (16 missing: bahrain, uganda)
+unique(WIDEdat$Country[(WIDEdat[,"Country"] %in% globe[,"Country"]==FALSE)])
+
 # impute missing values
 # Belgium - Germanic countries (will be included in GLOBE 2020)
 # Luxembourg - Germanic countries (will be included in GLOBE 2020)
-Germanic <- c("Netherlands","Germany")
 globe[nrow(globe)+1,1] <- "Belgium"
-globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% Germanic,2:19],2,function(x) mean(as.numeric(x)))
+globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("Netherlands","Germany"),2:19],2,function(x) mean(as.numeric(x)))
 globe[nrow(globe)+1,1]<-"Luxembourg"
-globe[nrow(globe),2:19]<- apply(globe[globe$Country %in% Germanic,2:19],2,function(x) mean(as.numeric(x)))
+globe[nrow(globe),2:19]<- apply(globe[globe$Country %in% c("Netherlands","Germany"),2:19],2,function(x) mean(as.numeric(x)))
 
 # Norway - Nordic countries (will be included in GLOBE 2020)
 Nordic <- c("Sweden") 
@@ -81,9 +87,8 @@ globe[nrow(globe)+1,1]<-"Bulgaria"
 globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("Turkey","Slovenia","Greece"),2:19],2,function(x) mean(as.numeric(x)))
 
 # Bosnia and Herzegovina (will be included in GLOBE 2020)
-Yugoslavia <- c("Slovenia","Albania") # almost neighboring countries
 globe[nrow(globe)+1,1]<-"Bosnia and Herzegovina"
-globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% Yugoslavia,2:19],2,function(x) mean(as.numeric(x)))
+globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("Slovenia","Albania"),2:19],2,function(x) mean(as.numeric(x)))
 
 # Cyprus
 globe[nrow(globe)+1,1]<-"Cyprus"
@@ -107,9 +112,13 @@ globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("India","Iran"),2:19],
 globe[nrow(globe)+1,1]<-"Fiji Islands"
 globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("New Zealand","Philippines"),2:19],2,function(x) mean(as.numeric(x)))
 
-# Vietnam (will be added in GLOBE 2020)
+# Vietnam (will be added in GLOBE 2020), sri lanka, bangladesh
 globe[nrow(globe)+1,1]<-"Vietnam"
 globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("Thailand","Philippines","Malaysia"),2:19],2,function(x) mean(as.numeric(x)))
+globe[nrow(globe)+1,1]<-"Sri Lanka"
+globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("India","Indonesia"),2:19],2,function(x) mean(as.numeric(x)))
+globe[nrow(globe)+1,1]<-"Bangladesh"
+globe[nrow(globe),2:19]<-apply(globe[globe$Country %in% c("India","China"),2:19],2,function(x) mean(as.numeric(x)))
 
 # Uganda 
 globe[nrow(globe)+1,1]<-"Uganda"
@@ -136,19 +145,17 @@ for(c in unique(WIDEdat$Country)){
 # Switzerland: 124 
 # South africa (several urban regions, 67% black): 122
 # Canada (english): 75, 128, 136
-WIDEdat[WIDEdat$ID==2,26:43]  <-as.numeric(apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2, mean))
-WIDEdat[WIDEdat$ID==77,26:43] <-as.numeric(apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2, mean))
-WIDEdat[WIDEdat$ID==127,26:43]<-as.numeric(apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2, mean))
-WIDEdat[WIDEdat$ID==135,26:43]<-as.numeric(apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2, mean))
-WIDEdat[WIDEdat$ID==124,26:43]<-as.numeric(apply(globe[grepl(tolower("Switzerland"),tolower(globe$Country)),2:ncol(globe)], 2, mean))
-WIDEdat[WIDEdat$ID==122,26:43]<-as.numeric(apply(globe[grepl(tolower("Africa"),tolower(globe$Country)),2:ncol(globe)], 2, mean))
+WIDEdat[WIDEdat$ID==2,26:43]  <-apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2,function(x) mean(as.numeric(x)))
+WIDEdat[WIDEdat$ID==77,26:43] <-apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2,function(x) mean(as.numeric(x)))
+WIDEdat[WIDEdat$ID==127,26:43]<-apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2,function(x) mean(as.numeric(x)))
+WIDEdat[WIDEdat$ID==135,26:43]<-apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2,function(x) mean(as.numeric(x)))
+WIDEdat[WIDEdat$ID==124,26:43]<-apply(globe[grepl(tolower("Switzerland"),tolower(globe$Country)),2:ncol(globe)], 2,function(x) mean(as.numeric(x)))
+WIDEdat[WIDEdat$ID==122,26:43]<-apply(globe[grepl(tolower("Africa"),tolower(globe$Country)),2:ncol(globe)], 2,function(x) mean(as.numeric(x)))
 
 
 # and one from east germany:
-WIDEdat[WIDEdat$ID==43,26:43]<-as.numeric(apply(globe[globe$Country=="Germany (EAST)",2:ncol(globe)], 2, mean))
+WIDEdat[WIDEdat$ID==44,26:43]<- globe[globe$Country=="Germany (EAST)",2:ncol(globe)]
 
 # The following studies are from West Germany (this is value assigned to "Germany"): 
 # 42, 43, 47, 63, 72, 73, 98 (researchers are from that area)
-
-
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","corrnames","varnames","missings","long2wide","createList")))

@@ -1,3 +1,4 @@
+# first run preparation.R, moderators.R
 ############################################################################################
 #############################  creates a list of matrices ##################################
 ############################################################################################
@@ -87,11 +88,11 @@ dataList <- createList(WIDEdat, varnames, covariates)
 
 
 ### inspect
-summary(as.numeric(dataList$IC)) # mean 55.61 IC score
-sum(dataList$N) # 114870
-length(dataList$Data) # number of matrixes 225
-length(unique(names(dataList$Data))) # 201 articles
-nrow(table(dataList$Country)) # number of countries 46
+summary(as.numeric(dataList$IC)) # mean 51.54 IC score
+sum(dataList$N) # 130979
+length(dataList$Data) # number of matrixes 257
+length(unique(names(dataList$Data))) # 233 articles
+nrow(table(dataList$Country)) # number of countries 50
 
 ### For classical TPB:
 # use the wide file created for this purpose (see preparation.R)
@@ -114,9 +115,9 @@ for(i in seq(1,nrow(WIDEdat))){
 dataList_TPB <- createList(WIDEdat_TPB, c("B","IB","ATT","PBC","SN"), covariates)
 
 ### inspect
-sum(dataList_TPB$N) # 105662
-length(dataList_TPB$Data) # number of matrixes 215
-unique(names(dataList_TPB$Data)) # 191 articles
-nrow(table(dataList_TPB$Country)) # number of countries 46
+sum(dataList_TPB$N) # 121845
+length(dataList_TPB$Data) # number of matrixes 248
+unique(names(dataList_TPB$Data)) # 224 articles
+nrow(table(dataList_TPB$Country)) # number of countries 50
 
-rm(i,ncov,covariates)
+rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))
