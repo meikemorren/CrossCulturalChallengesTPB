@@ -32,12 +32,12 @@ for(r in 1:5){
 write.csv(tab, "output/tables/table1.csv")
 
 #------------------------------ TABLE 2 --------------------------------------------#
-values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
-
 table2<-cbind(tapply(WIDEdat$N, 
              factor(WIDEdat$Country), sum),
       table(factor(WIDEdat$Country)))
 rownames(table2)<-paste(rownames(table2)," (",table(factor(WIDEdat$Country)),")", sep = "")
+
+values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
 for(v in values){
   val<-tapply(as.numeric(WIDEdat[,v]), 
               factor(WIDEdat$Country), mean)
@@ -65,8 +65,11 @@ get_legend<-function(myggplot){
 df<-merge(Hofstede,globe, by=intersect(names(Hofstede), names(globe)), all=TRUE)
 
 # correlations between values
-cor(df[,values])
-cor.test(df[,values])
+x<-na.omit(df[,values])
+cor(x)
+cor.test(x$IC,x$ingr_p)
+cor.test(x$IC,x$inst_p)
+cor.test(x$inst_v,x$inst_p) 
 
 # change names 
 df[df$Country=="Germany (EAST)","Country"] <- "Germany"

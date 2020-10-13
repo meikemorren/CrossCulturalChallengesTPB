@@ -1,5 +1,5 @@
-,Chi,RMSEA,SRMR,TLI,CFI,BIC
-classical TPB,12.4(2),0.007,0.02,0.978,0.996,-15651.067
-PN affects B directly and via IB,4.7(2),0.003,0.011,0.993,0.999,-20107.38
-PN affects both ATT and PBC,72.2(4),0.011,0.053,0.916,0.978,-20063.34
-SN affects PN,86.8(4),0.013,0.046,0.898,0.973,-20048.816
+"","Chi","ChiDoF","RMSEA","TLI","CFI","BIC","SRMR"
+"classical TPB",12.417,2,0.007,0.978,0.996,-15649.214,0.02
+"PN affects B directly and via IB",4.658,2,0.003,0.993,0.999,-20105.497,0.011
+"PN affects both ATT and PBC",72.35,4,0.011,0.916,0.978,-20061.36,0.053
+"SN affects PN",86.459,4,0.013,0.899,0.973,-20047.252,0.046

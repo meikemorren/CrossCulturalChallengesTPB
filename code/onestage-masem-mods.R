@@ -66,11 +66,11 @@ fit4IC.anova<-anova(model4_IC,model4_fit0)
 
 #******************************  results Collectivism I *********************************************#
 cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList_TPB$inst_v)), check.names=FALSE)
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$inst_v), check.names=FALSE)
 model1_inst_v <- osmasem(model.name="Model 1 (Inst Values)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$inst_v)), check.names=FALSE)
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$inst_v), check.names=FALSE)
 model2_inst_v <- osmasem(model.name="Model 2 (Inst Values)", Mmatrix=M2, Tmatrix=T2, data=cor2dat)
 model3_inst_v <- osmasem(model.name="Model 3 (Inst Values)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_inst_v <- osmasem(model.name="Model 4 (Inst Values)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
@@ -82,11 +82,11 @@ fit4inst_v.anova<-anova(model4_inst_v,model4_fit0)
 
 #******************************  results institutional coll practices *********************************************
 cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList_TPB$inst_p)), check.names=FALSE) 
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$inst_p), check.names=FALSE) 
 model1_inst_p <- osmasem(model.name="Model 1 (Inst Practices)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$inst_p)), check.names=FALSE) 
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$inst_p), check.names=FALSE) 
 model2_inst_p <- osmasem(model.name="Model 2 (Inst Practices)", Mmatrix=M2, Tmatrix=T2, data=cor2dat)
 model3_inst_p <- osmasem(model.name="Model 3 (Inst Practices)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_inst_p <- osmasem(model.name="Model 4 (Inst Practices)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
@@ -98,11 +98,11 @@ fit4inst_p.anova<-anova(model4_inst_p,model4_fit0)
 
 #******************************  results Collectivism II *********************************************
 cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList_TPB$ingr_v)), check.names=FALSE)
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$ingr_v), check.names=FALSE)
 model1_ingr_v <- osmasem(model.name="Model 1 (Ingr Values)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$ingr_v)), check.names=FALSE)
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$ingr_v), check.names=FALSE)
 model2_ingr_v <- osmasem(model.name="Model 2 (Ingr Values)", Mmatrix=M2, Tmatrix=T2, data=cor2dat)
 model3_ingr_v <- osmasem(model.name="Model 3 (Ingr Values)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_ingr_v <- osmasem(model.name="Model 4 (Ingr Values)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
@@ -114,11 +114,11 @@ fit4ingr_v.anova<-anova(model4_ingr_v,model4_fit0)
 
 #******************************  results ingroup coll practices *********************************************
 cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList_TPB$ingr_p)), check.names=FALSE) 
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$ingr_p), check.names=FALSE) 
 model1_ingr_p <- osmasem(model.name="Model 1 (Ingr Practices)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
-cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$ingr_p)), check.names=FALSE) 
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$ingr_p), check.names=FALSE) 
 model2_ingr_p <- osmasem(model.name="Model 2 (Ingr Practices)", Mmatrix=M2, Tmatrix=T2, data=cor2dat)
 model3_ingr_p <- osmasem(model.name="Model 3 (Ingr Practices)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_ingr_p <- osmasem(model.name="Model 4 (Ingr Practices)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
@@ -168,10 +168,17 @@ write.csv(modelfit, 'output/tables/table4.csv')
 
 
 #****************************** table 5 *********************************************
-summary(model1_ingr_v) 
+summary(model1_ingr_v) # PBC on B .048
 summary(model2_ingr_v) 
-summary(model3_ingr_v) # PN on PBC (-.04)
-summary(model4_ingr_v) 
+summary(model3_ingr_v) # PN on PBC (-.043) PN on ATT (-.033, z=1.85)
+summary(model3_ingr_p) # PN on PBC (.047) PN on ATT (-.037) and ATT on IB (-.032, z=1.815)
+
+summary(model2_inst_p)
+
+summary(model2_inst_v)
+
+summary(model3_ingr_v) # PN on PBC (-.041) PN on ATT (-.032, z=1.84)
+summary(model3_ingr_p) # PN on PBC (.045) PN on ATT (-.038) and ATT on IB (-.030, sign .1)
 
 
 summary(model6_IC) # PN+ ATT- 

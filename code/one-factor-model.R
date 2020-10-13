@@ -39,12 +39,15 @@ cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
 cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$inst_v)), check.names=FALSE)
 modelx_inst_v <- osmasem(model.name="One factor (Inst Values)", Mmatrix=Mx, Tmatrix=Tx, data=cor2dat)
 anova(modelx_inst_v,modelx_fit0)
+summary(modelx_inst_v)
 
 #******************************  institutional coll practices *********************************************
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
 cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$inst_p)), check.names=FALSE) 
 modelx_inst_p <- osmasem(model.name="One factor (Inst Practices)", Mmatrix=Mx, Tmatrix=Tx, data=cor2dat)
 anova(modelx_inst_p,modelx_fit0)
+summary(modelx_inst_p)
+# ATT -.032
 
 #****************************** ingroup coll values *********************************************
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
@@ -52,6 +55,9 @@ cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$ingr_v)),
 modelx_ingr_v <- osmasem(model.name="One factor (Ingr Values)", Mmatrix=Mx, Tmatrix=Tx, data=cor2dat)
 anova(modelx_ingr_v,modelx_fit0)
 summary(modelx_ingr_v)
+# PN -.032
+# ATT -.022
+# B -.032
 
 #******************************  ingroup coll practices *********************************************
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
@@ -59,3 +65,6 @@ cor2dat$data <- data.frame(cor2dat$data, Mod=scale(as.numeric(dataList$ingr_p)),
 modelx_ingr_p <- osmasem(model.name="One factor (Ingr Practices)", Mmatrix=Mx, Tmatrix=Tx, data=cor2dat)
 anova(modelx_ingr_p,modelx_fit0)
 summary(modelx_ingr_p)
+# PN -.031
+# ATT .032
+# SN .022 (z=1.926)

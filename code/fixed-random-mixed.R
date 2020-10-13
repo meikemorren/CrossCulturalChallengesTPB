@@ -44,7 +44,7 @@ for(m in mod) colnames_m <- c(colnames_m,paste(m,"a"),"z",paste(m,"b"), "z")
 rownames(results) <- colnames(WIDEdat)[5:19]
 colnames(results) <- c(colnames(results)[1:8],colnames_m)
 round(results[c(1,3,6:9),],3)
-
+write.csv(results,"output/tables/fixed-mixed.csv")
 
 ####################################################################################
 #############################  publication bias ####################################
