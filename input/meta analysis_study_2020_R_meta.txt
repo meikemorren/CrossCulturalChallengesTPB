@@ -82,7 +82,7 @@
 82;Albayrak (2012);customers;Turkey;NA;1309;93.5;NA;F2F;NA;behavior
 83;Chou et al (2012);entrepeneurs;Taiwan;NA;245;70;convenience;PAPI;2009;green practices
 84;Guido et al (2010);Consumers;France;NA;49;NA;convenience;F2F;NA;food
-85;Guido et al (2010);NA;Italy;NA;158;NA;convenience;F2F;NA;food
+85;Guido et al (2010);consumers;Italy;NA;158;NA;convenience;F2F;NA;food
 86;Aman et al (2012);consumers;Malaysia;rural;384;0.78;convenience;CAWI/PAPI;NA;NA
 87;Chen & Tung (2014);consumers;Taiwan;NA;559;NA;convenience;CAWI;2010;behavior
 88;Claudy et al (2013);homeowners;Ireland;both;254;NA;quota;CATI;NA;behavior
@@ -99,7 +99,7 @@
 99;Scherbaum et al (2008);employees;USA;NA;154;NA;NA;PAPI;NA;conservation
 100;Teng et al (2013);consumers;Taiwan;NA;258;0.645;random;F2F;NA;NA
 101;Tikir & Lehmann (2011);students/staff;Switzerland;NA;1563;0.15;NA;CAWI;2008/2009;behavior
-102;Zhao et al (2014);NA;China;NA;500;0.961538462;cluster;NA;2009;purchase/recycling
+102;Zhao et al (2014);residents;China;NA;500;0.961538462;cluster;NA;2009;purchase/recycling
 103;Judge et al (2019);Homebuyers;Australia;NA;330;NA;Non-Random;CAWI;NA;Green intentions
 104;Russell et al (2017);Consumers;UK;NA;172;NA;Non-random;CAWI;"2014, 2015";food waste behaviour
 105;Yadav & Pathak (2016);Young consumers;India;Urban;256;0.859;Convenience;PAPI;NA;Intention
@@ -114,7 +114,7 @@
 114;Deng et al (2017);High-school students;China;Rural;488;0.926;NA;PAPI;NA;Water conservation
 115;Han et al (2019);Cruise travelers;USA;Various geographical areas;350;NA;NA;CAWI;NA;Deciding on pro-environmental cruise products
 116;Wang et al (2019a);Generall population;China;NA;1349;0.91;Random;PAPI;2017;Willingness to online recycling
-117;Lizin et al (2017);NA;Belgium;NA;1638;NA;NA;CAWI;2014-2015;Battery pack recycling
+117;Lizin et al (2017);households;Belgium;NA;1638;NA;NA;CAWI;2014-2015;Battery pack recycling
 118;Al Mamun et al (2018);low-income households;Malaysia;Coastal areas;380;NA;Random;F2F;NA;Green products consumption
 119;Botetzagias et al (2015);Citizens;Greece;NA;293;NA;Convenience?;CAWI;2013;Intention to recycle
 120;Chen & Tung (2010);Consumers;Taiwan;Rural;541;NA;Non-random;PAPI;2008;Intention to Recycle
@@ -227,7 +227,7 @@
 227;Liu et al (2020);Residents/Consumers;China;Cities;347;87.0 %;NA;CATI;NA;electric cars
 228;Parveen & Ahmad (2020);Faculty at Colelges/Universities;Pakistan;City;404;NA;Convinience;F2F;2018;NA
 229;Agag & Colmekcioglu (2020);customers;Egypt;NA;871;29.0 %;random;CAWI;2019;green hotel
-230;Alzubaidi et al (2020);NA;Saudi Arabia;NA;611;NA;convenience;CAWI;NA;NA
+230;Alzubaidi et al (2020);consumers;Saudi Arabia;NA;611;NA;convenience;CAWI;NA;NA
 231;Reyhanloo et al (2018);investors;Switzerland;NA;68;NA;convenience;CAWI;2016;green investments
 232;Bashir et al (2019);consumers;Malaysia;NA;394;24.6 %;NA;CAWI;NA;green hotel
 233;Wang et al (2020a);tourists;China;NA;483;NA;convenience;PAPI;2017;environmental behavior
@@ -241,7 +241,7 @@
 241;Jin et al (2019);consumers;China;NA;336;67.2 %;convencience;CAWI;2018;eco-labeled products
 242;Khan et al (2020);organizations;Belgium;NA;637;12.7 %;random;CAWI;2020;plastic recycling
 243;Shen et al (2020);Farmers;China;Rural;327;93.4 %;Convinience;F2F;2019;Waste sorting
-244;Si et al (2020);Consumers/Residents;China;Urban;705;Hard to calculate (SEE FIGURE 2);Representative/random;CAWI;NA;Bike sharing
+244;Si et al (2020);Consumers/Residents;China;Urban;705;0.679190751;Representative/random;CAWI;NA;Bike sharing
 245;Wang et al (2019d);Consumers/tourists;China;City - touristic destination;483;89.4 %;Random;F2F;2017;Environmental Behavior in a touristic site
 246;Wang et al (2019e);Residents;China;Both Urban and non-Urban;1273;71.5 %;Random;Both Computer and Pencil/Paper;2018;Environmental complaints/Climate Change
 247;Wang et al (2020b);City;China;NA;534;89.0 %;Random;F2F;2017;Environmental Behavior in a touristic site

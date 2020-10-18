@@ -76,7 +76,6 @@ M0 <- create.vechsR(A0=RAM4$A,S0=RAM4$S) # Mmatrix
 T0 <- create.Tau2(RAM=RAM4, RE.type="Diag") #Tmatrix
 model4_fit0  <- osmasem(model.name="No Moderator", Mmatrix=M0, Tmatrix=T0, data=dat2, suppressWarnings=FALSE)
 
-
 #----------------------------------------------- TABLE ----------------------------------------------------------#
 
 fit_model1<-summary(model1_fit0, fitIndices = TRUE)
