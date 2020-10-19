@@ -1,7 +1,2 @@
-# Ignore everything in this directory
-# Except this file
+*
 !.gitignore
-table3.csv
-table4_LL.csv
-table4_X2.csv
-table5.csv
