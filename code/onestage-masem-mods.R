@@ -237,50 +237,26 @@ for(m in c("model2_IC","model3_IC","model4_IC",
 write.csv(modelfit, 'output/tables/table4_X2.csv')
 
 #****************************** table 5 *********************************************
-# only personal norms direct relationships
-summary(model2_ingr_v) # PN on IB (-.053)
-summary(model3_ingr_v) # PN on PBC (-.051) PN on ATT (-.042)
-summary(model4_ingr_v) # PN on IB (-.046)
-summary(model3_ingr_p) # PN on PBC (.041) PN on ATT (-.047)
-summary(model3_IC) # PN on PBC (-.046) PN on ATT (.030, z=1.85)
+model3_fit0.coef<-summary(model3_fit0)
+fit3IC.coef <-summary(model3_IC)
+fit3ingr_v.coef <-summary(model3_ingr_v)
+fit3ingr_p.coef <-summary(model3_ingr_p)
+modelfit <- as.data.frame(matrix(0,nrow=9,ncol=8))
+parid1<-12:13
+rownames(modelfit) <- c(fit3ingr_v.coef$parameters$name[c(1:7,parid1)])
 
-# only personal norms, also indirect relationships (SN in for model 1)
-summary(model1_ingr_v) # SN on IB (-.035)
-summary(model2_ingr_v) # PN on IB (-.054)
-summary(model3_ingr_v) # PN on PBC (-.043) PN on ATT (-.034, z=1.92)
-summary(model4_ingr_v) # PN on IB (-.047)
-summary(model3_ingr_p) # PN on PBC (.049) ATT on IB (-.033) and PN on ATT (-.037)
-summary(model3_IC) # PN on PBC (-.049)
+# main effects
+modelfit[1:7,1:2] <- c(round(model3_fit0.coef$parameters$Estimate[1:7],3),round(model3_fit0.coef$parameters$`z value`[1:7],2))
+modelfit[1:7,3:4] <- c(round(fit3IC.coef$parameters$Estimate[1:7],3),round(fit3IC.coef$parameters$`z value`[1:7],2))
+modelfit[1:7,5:6] <- c(round(fit3ingr_v.coef$parameters$Estimate[1:7],3),round(fit3ingr_v.coef$parameters$`z value`[1:7],2))
+modelfit[1:7,7:8] <- c(round(fit3ingr_p.coef$parameters$Estimate[1:7],3),round(fit3ingr_p.coef$parameters$`z value`[1:7],2))
 
-# all norms
-summary(model1_ingr_v) # SN on IB (-.034)
-summary(model2_ingr_v) # no sign relationships
-summary(model3_ingr_v) # PN on PBC (-.042) PN on ATT (-.033, z=1.850)
-summary(model4_ingr_v) # PN on IB (-.047); SN on PN (-.048, z=1.726)
-summary(model3_ingr_p) # PN on PBC (.049) ATT on IB (-.035) and PN on ATT (-.038)
-summary(model3_IC) # PN on PBC (-.049) (although LL test shows no significance!)
-
-# model6_fit0.coef<-summary(model6_fit0)
-# fit6IC.coef <-summary(model6_IC)
-# fit6ingr_v.coef <-summary(model6_ingr_v)
-# fit6ingr_p.coef <-summary(model6_ingr_p)
-# parid1 <- grep("_1",fit6IC.coef$parameters$name)[1:6]
-# modelfit <- as.data.frame(matrix(0,nrow=12,ncol=8))
-# rownames(modelfit) <- c(fit6ingr_v.coef$parameters$name[c(1:12)])
-# 
-# # main effects
-# modelfit[1:6,1:2] <- c(round(model6_fit0.coef$parameters$Estimate[1:6],3),round(model6_fit0.coef$parameters$`z value`[1:6],2))
-# modelfit[1:6,3:4] <- c(round(fit6IC.coef$parameters$Estimate[1:6],3),round(fit6IC.coef$parameters$`z value`[1:6],2))
-# modelfit[1:6,5:6] <- c(round(fit6ingr_v.coef$parameters$Estimate[1:6],3),round(fit6ingr_v.coef$parameters$`z value`[1:6],2))
-# modelfit[1:6,7:8] <- c(round(fit6ingr_p.coef$parameters$Estimate[1:6],3),round(fit6ingr_p.coef$parameters$`z value`[1:6],2))
-# 
-# # moderator efects
-# modelfit[7:12,1:2] <- NA
-# modelfit[7:12,3:4] <- c(round(fit6IC.coef$parameters$Estimate[parid1],3),round(fit6IC.coef$parameters$`z value`[parid1],2))
-# modelfit[7:12,5:6] <- c(round(fit6ingr_v.coef$parameters$Estimate[parid1],3),round(fit6ingr_v.coef$parameters$`z value`[parid1],2))
-# modelfit[7:12,7:8] <- c(round(fit6ingr_p.coef$parameters$Estimate[parid1],3),round(fit6ingr_p.coef$parameters$`z value`[parid1],2))
-# modelfit
-# 
-# write.csv(modelfit[c(6,1:2,5,3:4,12,7:8,11,9:10),], 'Tables/OSMASEM_onefactor_moderator_pars.csv')
+# moderator efects
+modelfit[8:9,1:2] <- NA
+modelfit[8:9,3:4] <- c(round(fit3IC.coef$parameters$Estimate[parid1],3),round(fit3IC.coef$parameters$`z value`[parid1],2))
+modelfit[8:9,5:6] <- c(round(fit3ingr_v.coef$parameters$Estimate[parid1],3),round(fit3ingr_v.coef$parameters$`z value`[parid1],2))
+modelfit[8:9,7:8] <- c(round(fit3ingr_p.coef$parameters$Estimate[parid1],3),round(fit3ingr_p.coef$parameters$`z value`[parid1],2))
+modelfit
+write.csv(modelfit, 'output/tables/table5.csv')
 
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))
