@@ -1,5 +1,7 @@
+archive/*
+output/tables/*
+!output/tables/table3.csv
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
-archive/
