@@ -1,5 +1,5 @@
 archive/*
-output/tables/*
+output/*
 .Rproj.user
 .Rhistory
 .RData
