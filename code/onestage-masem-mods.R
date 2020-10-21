@@ -5,73 +5,49 @@
 # first run onestage-masem.R
 library(metaSEM)
 
-# Ax1 <- matrix(c(0, "0*data.Mod", 0, "0*data.Mod",0,
-#                 0,0,"0*data.Mod","0*data.Mod","0*data.Mod",
-#                 0,0,0,0,0,
-#                 0,0,0,0,0,
-#                 0,0,0,0,0), ncol=5, nrow=5, byrow = TRUE)
-# 
-# Ax2 <- matrix(c(0, "0*data.Mod", 0, "0*data.Mod","0*data.Mod",0,
-#                 0,0,"0*data.Mod","0*data.Mod","0*data.Mod","0*data.Mod",
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-# Ax3 <- matrix(c(0, "0*data.Mod", 0, "0*data.Mod", 0,0,
-#                 0,0,"0*data.Mod","0*data.Mod",0,"0*data.Mod",
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-# Ax4 <- matrix(c(0, "0*data.Mod", 0, "0*data.Mod", 0,0,
-#                 0,0,"0*data.Mod","0*data.Mod","0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,"0*data.Mod",
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
 ####################################################################################
-# only personal norms?
-# Ax1 <- matrix(c(0, "0*data.Mod", 0, 0,0,
-#                 0,0,0,0,"0*data.Mod",
-#                 0,0,0,0,0,
-#                 0,0,0,0,0,
-#                 0,0,0,0,0), ncol=5, nrow=5, byrow = TRUE)
-# Ax2 <- matrix(c(0,"0*data.Mod",0, 0,"0*data.Mod",0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-# Ax3 <- matrix(c(0,"0*data.Mod", 0,"0*data.Mod",0,0,
-#                 0,0,"0*data.Mod","0*data.Mod",0,0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-# Ax4 <- matrix(c(0, "0*data.Mod", 0, 0, 0,0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-Ax2 <- matrix(c(0,0,0, 0,"0*data.Mod",0,
+## all norms direct and indirect relationships
+Ax1 <- matrix(c(0, "0*data.Mod", 0, 0,0,
+                0,0,0,0,"0*data.Mod",
+                0,0,0,0,0,
+                0,0,0,0,0,
+                0,0,0,0,0), ncol=5, nrow=5, byrow = TRUE)
+Ax2 <- matrix(c(0,"0*data.Mod",0, 0,"0*data.Mod",0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-Ax3 <- matrix(c(0,0,0,0,0,0,
-                0,0,0,0,0,0,
+Ax3 <- matrix(c(0,"0*data.Mod", 0,"0*data.Mod",0,0,
+                0,0,"0*data.Mod","0*data.Mod",0,0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-Ax4 <- matrix(c(0,0, 0, 0, 0,0,
+Ax4 <- matrix(c(0, "0*data.Mod", 0, 0, 0,0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0,
-                0,0,0,0,0,0,
+                0,0,0,0,0,"0*data.Mod",
                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
+# Ax2 <- matrix(c(0,0,0, 0,"0*data.Mod",0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
+# Ax3 <- matrix(c(0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
+# Ax4 <- matrix(c(0,0, 0, 0, 0,0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
 
 # tau matrix 
 T1 <- create.Tau2(RAM=RAM1, RE.type="Diag")
@@ -88,9 +64,9 @@ M4 <- create.vechsR(A0=RAM4$A, S0=RAM4$S, Ax=Ax4)
 
 
 #******************************  results Individualism Collectivism *********************************************
-# cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-# cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$IC), check.names=FALSE) 
-# model1_IC <- osmasem(model.name="Model 1 (IC)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
+cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$IC), check.names=FALSE)
+model1_IC <- osmasem(model.name="Model 1 (IC)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
 cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$IC), check.names=FALSE) 
@@ -100,16 +76,16 @@ model4_IC <- osmasem(model.name="Model 4 (IC)", Mmatrix=M4, Tmatrix=T4, data=cor
 
 
 # compare moderator with non-moderator model
-# fit1IC.anova<-anova(model1_IC,model1_fit0)
+fit1IC.anova<-anova(model1_IC,model1_fit0)
 fit2IC.anova<-anova(model2_IC,model2_fit0)
 fit3IC.anova<-anova(model3_IC,model3_fit0)
 fit4IC.anova<-anova(model4_IC,model4_fit0)
 
 
 #******************************  results Collectivism I *********************************************#
-# cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-# cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$inst_v), check.names=FALSE)
-# model1_inst_v <- osmasem(model.name="Model 1 (Inst Values)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
+cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$inst_v), check.names=FALSE)
+model1_inst_v <- osmasem(model.name="Model 1 (Inst Values)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
 cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$inst_v), check.names=FALSE)
@@ -117,15 +93,15 @@ model2_inst_v <- osmasem(model.name="Model 2 (Inst Values)", Mmatrix=M2, Tmatrix
 model3_inst_v <- osmasem(model.name="Model 3 (Inst Values)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_inst_v <- osmasem(model.name="Model 4 (Inst Values)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
 
-# fit1inst_v.anova<-anova(model1_inst_v,model1_fit0)
+fit1inst_v.anova<-anova(model1_inst_v,model1_fit0)
 fit2inst_v.anova<-anova(model2_inst_v,model2_fit0)
 fit3inst_v.anova<-anova(model3_inst_v,model3_fit0)
 fit4inst_v.anova<-anova(model4_inst_v,model4_fit0)
 
 #******************************  results institutional coll practices *********************************************
-# cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-# cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$inst_p), check.names=FALSE) 
-# model1_inst_p <- osmasem(model.name="Model 1 (Inst Practices)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
+cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$inst_p), check.names=FALSE)
+model1_inst_p <- osmasem(model.name="Model 1 (Inst Practices)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
 cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$inst_p), check.names=FALSE) 
@@ -133,15 +109,15 @@ model2_inst_p <- osmasem(model.name="Model 2 (Inst Practices)", Mmatrix=M2, Tmat
 model3_inst_p <- osmasem(model.name="Model 3 (Inst Practices)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_inst_p <- osmasem(model.name="Model 4 (Inst Practices)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
 
-# fit1inst_p.anova<-anova(model1_inst_p,model1_fit0)
+fit1inst_p.anova<-anova(model1_inst_p,model1_fit0)
 fit2inst_p.anova<-anova(model2_inst_p,model2_fit0)
 fit3inst_p.anova<-anova(model3_inst_p,model3_fit0)
 fit4inst_p.anova<-anova(model4_inst_p,model4_fit0)
 
 #******************************  results Collectivism II *********************************************
-# cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-# cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$ingr_v), check.names=FALSE)
-# model1_ingr_v <- osmasem(model.name="Model 1 (Ingr Values)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
+cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$ingr_v), check.names=FALSE)
+model1_ingr_v <- osmasem(model.name="Model 1 (Ingr Values)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
 cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$ingr_v), check.names=FALSE)
@@ -149,15 +125,15 @@ model2_ingr_v <- osmasem(model.name="Model 2 (Ingr Values)", Mmatrix=M2, Tmatrix
 model3_ingr_v <- osmasem(model.name="Model 3 (Ingr Values)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_ingr_v <- osmasem(model.name="Model 4 (Ingr Values)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
 
-# fit1ingr_v.anova<-anova(model1_ingr_v,model1_fit0)
+fit1ingr_v.anova<-anova(model1_ingr_v,model1_fit0)
 fit2ingr_v.anova<-anova(model2_ingr_v,model2_fit0)
 fit3ingr_v.anova<-anova(model3_ingr_v,model3_fit0)
 fit4ingr_v.anova<-anova(model4_ingr_v,model4_fit0)
 
 #******************************  results ingroup coll practices *********************************************
-# cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
-# cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$ingr_p), check.names=FALSE) 
-# model1_ingr_p <- osmasem(model.name="Model 1 (Ingr Practices)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
+cor2dat<-Cor2DataFrame(dataList_TPB$Data, dataList_TPB$N, acov='weighted')
+cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList_TPB$ingr_p), check.names=FALSE)
+model1_ingr_p <- osmasem(model.name="Model 1 (Ingr Practices)", Mmatrix=M1, Tmatrix=T1, data=cor2dat)
 
 cor2dat<-Cor2DataFrame(dataList$Data, dataList$N, acov='weighted')
 cor2dat$data <- data.frame(cor2dat$data, Mod=scale(dataList$ingr_p), check.names=FALSE) 
@@ -165,7 +141,7 @@ model2_ingr_p <- osmasem(model.name="Model 2 (Ingr Practices)", Mmatrix=M2, Tmat
 model3_ingr_p <- osmasem(model.name="Model 3 (Ingr Practices)", Mmatrix=M3, Tmatrix=T3, data=cor2dat)
 model4_ingr_p <- osmasem(model.name="Model 4 (Ingr Practices)", Mmatrix=M4, Tmatrix=T4, data=cor2dat)
 
-# fit1ingr_p.anova<-anova(model1_ingr_p,model1_fit0)
+fit1ingr_p.anova<-anova(model1_ingr_p,model1_fit0)
 fit2ingr_p.anova<-anova(model2_ingr_p,model2_fit0)
 fit3ingr_p.anova<-anova(model3_ingr_p,model3_fit0)
 fit4ingr_p.anova<-anova(model4_ingr_p,model4_fit0)
@@ -206,41 +182,14 @@ modelfit[1,10:11]<-c(fit1ingr_p.anova$diffLL[2], fit1ingr_p.anova$p[2])
 modelfit[2,10:11]<-c(fit2ingr_p.anova$diffLL[2], fit2ingr_p.anova$p[2])
 modelfit[3,10:11]<-c(fit3ingr_p.anova$diffLL[2], fit3ingr_p.anova$p[2])
 modelfit[4,10:11]<-c(fit4ingr_p.anova$diffLL[2], fit4ingr_p.anova$p[2])
-write.csv(modelfit, 'output/tables/table4_LL.csv')
-
-# X2
-modelfit <- as.data.frame(matrix(0,nrow=15,ncol=6))
-fitMeasures<-c("Chi","ChiDoF","RMSEA","TLI","CFI","BIC.Mx")
-
-for(m in c("model2_IC","model3_IC","model4_IC",
-           "model2_inst_v","model3_inst_v","model4_inst_v",
-           "model2_inst_p","model3_inst_p","model4_inst_p",
-           "model2_ingr_v","model3_ingr_v","model4_ingr_v",
-           "model2_ingr_p","model3_ingr_p","model4_ingr_p")){
-  
-  results<-summary(eval(as.name(m)), fitIndices = T)
-  n <- as.numeric(unlist(strsplit(strsplit(m,"_")[[1]][1],"model"))[2])-2
-  
-  if(grepl("IC",m)) id <-1+n 
-  if(grepl("inst_v",m)) id <- 4+n
-  if(grepl("inst_p",m)) id <- 7+n
-  if(grepl("ingr_v",m)) id <- 10+n
-  if(grepl("ingr_p",m)) id <- 13+n
-  rownames(modelfit)[id] <- m
-  
-  modelfit[id,] <- round(unlist(results[fitMeasures]),3)
-  modelfit[id,] <- round(unlist(results[fitMeasures]),3)
-  modelfit[id,] <- round(unlist(results[fitMeasures]),3)
-  modelfit[id,] <- round(unlist(results[fitMeasures]),3)
-  modelfit[id,] <- round(unlist(results[fitMeasures]),3)
-}
-write.csv(modelfit, 'output/tables/table4_X2.csv')
+write.csv(modelfit, 'output/tables/table4.csv')
 
 #****************************** table 5 *********************************************
 model3_fit0.coef<-summary(model3_fit0)
-fit3IC.coef <-summary(model3_IC)
+fit3IC.coef     <-summary(model3_IC)
 fit3ingr_v.coef <-summary(model3_ingr_v)
 fit3ingr_p.coef <-summary(model3_ingr_p)
+
 modelfit <- as.data.frame(matrix(0,nrow=9,ncol=8))
 parid1<-12:13
 rownames(modelfit) <- c(fit3ingr_v.coef$parameters$name[c(1:7,parid1)])
@@ -256,7 +205,6 @@ modelfit[8:9,1:2] <- NA
 modelfit[8:9,3:4] <- c(round(fit3IC.coef$parameters$Estimate[parid1],3),round(fit3IC.coef$parameters$`z value`[parid1],2))
 modelfit[8:9,5:6] <- c(round(fit3ingr_v.coef$parameters$Estimate[parid1],3),round(fit3ingr_v.coef$parameters$`z value`[parid1],2))
 modelfit[8:9,7:8] <- c(round(fit3ingr_p.coef$parameters$Estimate[parid1],3),round(fit3ingr_p.coef$parameters$`z value`[parid1],2))
-modelfit
 write.csv(modelfit, 'output/tables/table5.csv')
 
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))

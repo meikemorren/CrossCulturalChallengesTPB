@@ -44,47 +44,6 @@ for(m in mod) colnames_m <- c(colnames_m,paste(m,"a"),"z",paste(m,"b"), "z")
 rownames(results) <- colnames(WIDEdat)[5:19]
 colnames(results) <- c(colnames(results)[1:8],colnames_m)
 
-# mixed effects of methodological moderators
-# create dummy vars
-mods<-c("sample","sampling","collection","behavior")
-for(m in mods) levels_<-levels(as.factor(WIDEdat[,m])); for(l in levels_)  WIDEdat[,l]<-as.numeric(WIDEdat[,m]==l)
-
-id<-1
-k<-ncol(results)+1
-colnames_m <- NULL
-for(i in 5:19){
-  results[id,k:(k+7)]<-
-    c(summary(meta(y=WIDEdat[,i], v=1/(WIDEdat[,4]-3), x=WIDEdat[,c("consumers","workforce","youth")]))$coefficients$Estimate[1:4],
-    summary(meta(y=WIDEdat[,i], v=1/(WIDEdat[,4]-3), x=WIDEdat[,c("consumers","workforce","youth")]))$coefficients$`z value`[1:4])[c(1,5,2,6,3,7,4,8)]
-  id<-id+1
-}
-for(var in c("consumers","workforce","youth"))  colnames_m <- c(colnames_m,paste(var,"b",sep="_"), "z")
-colnames(results)[k:(k+7)] <- c("a_residents","z",colnames_m)
-
-id<-1
-k<-ncol(results)+1
-colnames_m <- NULL
-for(i in 5:19){
-  results[id,k:(k+3)]<-
-    c(summary(meta(y=WIDEdat[,i], v=1/(WIDEdat[,4]-3), x=WIDEdat[,"random"]))$coefficients$Estimate[1:2],
-      summary(meta(y=WIDEdat[,i], v=1/(WIDEdat[,4]-3), x=WIDEdat[,"random"]))$coefficients$`z value`[1:2])[c(1,3,2,4)]
-  id<-id+1
-}
-colnames(results)[k:(k+3)] <- c("a_nonrandom","z",paste("random","b",sep="_"), "z")
-
-id<-1
-k<-ncol(results)+1
-colnames_m <- NULL
-for(i in 5:19){
-  results[id,k:(k+5)]<-
-    c(summary(meta(y=WIDEdat[,i], v=1/(WIDEdat[,4]-3), x=WIDEdat[,c("F2F","PAPI")]))$coefficients$Estimate[1:3],
-      summary(meta(y=WIDEdat[,i], v=1/(WIDEdat[,4]-3), x=WIDEdat[,c("F2F","PAPI")]))$coefficients$`z value`[1:3])[c(1,4,2,5,3,6)]
-  id<-id+1
-}
-for(var in c("F2F","PAPI"))  colnames_m <- c(colnames_m,paste(var,"b",sep="_"), "z")
-colnames(results)[k:(k+5)] <- c("a_cawi","z",colnames_m)
-
-# behavior has too many empty categories -> first recode
 round(results[c(1,3,6:9),],3)
 write.csv(results,"output/tables/fixed-mixed.csv")
 

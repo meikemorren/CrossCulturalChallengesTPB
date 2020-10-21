@@ -65,6 +65,7 @@ get_legend<-function(myggplot){
 df<-merge(Hofstede,globe, by=intersect(names(Hofstede), names(globe)), all=TRUE)
 
 # correlations between values
+values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
 x<-na.omit(df[,values])
 cor(x)
 cor.test(x$IC,x$ingr_p)

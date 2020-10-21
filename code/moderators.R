@@ -160,3 +160,7 @@ WIDEdat[WIDEdat$ID==44,26:43]<- globe[globe$Country=="Germany (EAST)",2:ncol(glo
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB",
                         "corrnames","varnames",
                         "Hofstede","globe")))
+
+# to use shiny app by Suzanne Jak et al (2020)
+write.table(WIDEdat,"output/data.txt",sep=";")
+getwd()

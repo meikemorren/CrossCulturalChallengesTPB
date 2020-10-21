@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # Data and Code of Meta Analysis 
 ### by Meike Morren & Amir Grinstein
 
@@ -18,7 +23,7 @@ The input folder contains three files:
 ### Code
 
 In the code folder you can find all the code used to obtain the figures and tables in the paper. 
-To inspect the datafile meta analysis_study_2020_R.txt, run the file preparation.R first. Next, to add the moderator variables (i.e. Individualism-Collectivism dimensions), run moderators.R. To conduct the bivariate analyses, go to fixed-random-mixed.R. This file also contains the tests for publication biases (e.g. funnel plots and egger's test). Before you start the MASEM analyses, the data needs to be reshaped into a list, see list.R. You can conduct the MASEM analysis via the file onestage-masem.R. Additionally we conduct the moderator analysis in onestage-masem-mods.R. 
+To inspect the datafile meta analysis_study_2020_R.txt, run the file preparation.R first. Next, run moderators.R to add the moderator variables (i.e. Individualism-Collectivism dimensions). To conduct the bivariate analyses, go to fixed-random-mixed.R. This file also contains the tests for publication biases (e.g. funnel plots and egger's test). Before you start the MASEM analyses, the data needs to be reshaped into a list, see list.R. You can conduct the MASEM analysis via the file onestage-masem.R. Additionally we conduct the moderator analysis in onestage-masem-mods.R. 
 
 - **preparation.R** : reads in file, creates a wide format (each study one line), and adds labels to the correlations
 - **moderators.R** : reads in files of moderator values, imputes missing values, and creates a wide format dataframe
@@ -34,4 +39,6 @@ This folder contains two subfolders: Tables and Figures. If you run the code, th
 
 ## How to use?
 
-You might benefit from our efforts in collecting 255 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory in the main folder!
+You might benefit from our efforts in collecting 255 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory in the main folder! If you use our data, please cite the paper:
+
+"put citation here"
