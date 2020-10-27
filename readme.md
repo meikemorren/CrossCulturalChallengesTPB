@@ -1,8 +1,3 @@
----
-output:
-  word_document: default
-  html_document: default
----
 # Data and Code of Meta Analysis 
 ### by Meike Morren & Amir Grinstein
 
