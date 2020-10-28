@@ -50,27 +50,14 @@ write.csv(table2, 'output/tables/table2.csv')
 
 #------------------------------ FIGURE 4 --------------------------------------------#
 library(ggplot2)
-library(gridExtra)
 library(grid)
-library(cowplot)
 
-tiff("output/figures/values-plots.tiff", width = 10, height = 10, units = 'in', res = 300)
-
-get_legend<-function(myggplot){
-  tmp <- ggplot_gtable(ggplot_build(myggplot))
-  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
-  legend <- tmp$grobs[[leg]]
-  return(legend)
-}
+# make sure to run moderators.R first!
 df<-merge(Hofstede,globe, by=intersect(names(Hofstede), names(globe)), all=TRUE)
 
 # correlations between values
 values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
-x<-na.omit(df[,values])
-cor(x)
-cor.test(x$IC,x$ingr_p)
-cor.test(x$IC,x$inst_p)
-cor.test(x$inst_v,x$inst_p) 
+cor(na.omit(df[,values]))
 
 # change names 
 df[df$Country=="Germany (EAST)","Country"] <- "Germany"
@@ -83,34 +70,36 @@ df$Included <-"no"
 df[which(df$Country %in% WIDEdat$Country),"Included"]<- "yes"
 
 # plots
+tiff("output/figures/values-plots.tiff", width = 10, height = 10, 
+     units = 'in', res = 300)
+
 p<-ggplot(df,aes(as.numeric(ingr_v), IC, colour = Included))+
-  ggtitle("Ingroup values") +
-  theme(axis.title.x=element_blank(), axis.title.y=element_blank())+
-  theme(legend.title=element_text("Included"))+
-  theme(legend.direction ="vertical", legend.box = "vertical")+
+  ggtitle("Ingroup values") + 
+  theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
+  theme(text=element_text(size=12,  family="serif"))+
   geom_point()
 q<-ggplot(df,aes(as.numeric(ingr_p), IC, colour = factor(Included)))+
-  ggtitle("Ingroup practices") + 
+  ggtitle("Ingroup practices")  + 
   theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
+  theme(text=element_text(size=12,  family="serif"))+
   geom_point()
 r<-ggplot(df,aes(as.numeric(inst_v), IC, colour = factor(Included)))+
   ggtitle("Institutional values") + 
   theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
+  theme(text=element_text(size=12,  family="serif"))+
   geom_point()
 s<-ggplot(df,aes(as.numeric(inst_p), IC, colour = factor(Included)))+
   ggtitle("Institutional practices") + 
   theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
+  theme(text=element_text(size=12,  family="serif"))+
   geom_point()
 
-# legend
-legend <- get_legend(p)
-p <- p + theme(legend.position="none")
-
 # create grid
-blankPlot <- ggplot()+geom_blank(aes(6,2)) + 
-  cowplot::theme_nothing()
-grid.arrange(p,q,legend,r,s, ncol=3,nrow=2,widths=c(2.5,2.5,.5),heights=c(2.4,2.4),
-             left="Collectivism - Individualism (Hofstede)")
+grid.arrange(p,q,r,s, ncol=2,nrow=2,
+             widths=c(2.5,2.5),
+             heights=c(2.4,2.4),
+             left=textGrob("Collectivism - Individualism (Hofstede)", rot=90, 
+                           gp=gpar(fontsize=16, fontfamily="serif")))
 dev.off()
 
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))
