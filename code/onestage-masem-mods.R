@@ -6,48 +6,55 @@
 library(metaSEM)
 
 ####################################################################################
-## all norms direct and indirect relationships
-Ax1 <- matrix(c(0, "0*data.Mod", 0, 0,0,
+# ## all norms direct and indirect relationships
+# Ax1 <- matrix(c(0, "0*data.Mod", 0, 0,0,
+#                 0,0,0,0,"0*data.Mod",
+#                 0,0,0,0,0,
+#                 0,0,0,0,0,
+#                 0,0,0,0,0), ncol=5, nrow=5, byrow = TRUE)
+# Ax2 <- matrix(c(0,"0*data.Mod",0, 0,"0*data.Mod",0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
+# Ax3 <- matrix(c(0,"0*data.Mod", 0,"0*data.Mod",0,0,
+#                 0,0,"0*data.Mod","0*data.Mod",0,0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
+# Ax4 <- matrix(c(0, "0*data.Mod", 0, 0, 0,0,
+#                 0,0,0,0,"0*data.Mod",0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,0,
+#                 0,0,0,0,0,"0*data.Mod",
+#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
+
+## only direct effects of personal norms
+Ax1 <- matrix(c(0,0,0,0,0,
                 0,0,0,0,"0*data.Mod",
                 0,0,0,0,0,
                 0,0,0,0,0,
                 0,0,0,0,0), ncol=5, nrow=5, byrow = TRUE)
-Ax2 <- matrix(c(0,"0*data.Mod",0, 0,"0*data.Mod",0,
+Ax2 <- matrix(c(0,0,0, 0,"0*data.Mod",0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-Ax3 <- matrix(c(0,"0*data.Mod", 0,"0*data.Mod",0,0,
-                0,0,"0*data.Mod","0*data.Mod",0,0,
+Ax3 <- matrix(c(0,0,0,0,0,0,
+                0,0,0,0,0,0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-Ax4 <- matrix(c(0, "0*data.Mod", 0, 0, 0,0,
+Ax4 <- matrix(c(0,0, 0, 0, 0,0,
                 0,0,0,0,"0*data.Mod",0,
                 0,0,0,0,0,0,
                 0,0,0,0,0,0,
-                0,0,0,0,0,"0*data.Mod",
+                0,0,0,0,0,0,
                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-# Ax2 <- matrix(c(0,0,0, 0,"0*data.Mod",0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-# Ax3 <- matrix(c(0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
-# Ax4 <- matrix(c(0,0, 0, 0, 0,0,
-#                 0,0,0,0,"0*data.Mod",0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0,
-#                 0,0,0,0,0,0), ncol=6, nrow=6, byrow = TRUE)
 
 # tau matrix 
 T1 <- create.Tau2(RAM=RAM1, RE.type="Diag")

@@ -93,6 +93,6 @@ modelfit[3,] <- round(c(unlist(fit_model3[c("Chi","ChiDoF","RMSEA","TLI","CFI","
 modelfit[4,] <- round(c(unlist(fit_model4[c("Chi","ChiDoF","RMSEA","TLI","CFI","BIC.Mx")]),osmasemSRMR(model4_fit0)),3)
 write.csv(modelfit, 'output/tables/table3.csv')
 
-rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB",
+rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","Hofstede","globe",
                         "dataList","dataList_TPB","RAM1","RAM2","RAM3","RAM4",
                         "model1_fit0","model2_fit0","model3_fit0","model4_fit0")))

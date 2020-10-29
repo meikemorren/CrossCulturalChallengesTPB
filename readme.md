@@ -10,10 +10,13 @@ We conducted a meta-analysis on Theory of Planned Behavior (TPB) in the field of
 
 ### Input
 
-The input folder contains three files:
+The input folder contains:
 - Hofstede values
 - GLOBE values
-- The matrices (note that we have collected more variables than used in the paper)
+- The matrices (MASEM_study_2020_R.txt)
+- The additional information on the studies (MASEM_study_2020_R_meta.txt)
+
+Note that data.txt can be analyzed using the newly-developed, user-friendly shiny app: Jak, S., Li, H., Kolbe, L., & Cheung, M. W. (2020, June 24). webMASEM: a shiny-app for one-stage MASEM. Retrieved from osf.io/wh6d3
 
 ### Code
 
@@ -34,6 +37,6 @@ The output folder contains two subfolders: Tables and Figures. If you run the co
 
 ## How to use?
 
-You might benefit from our efforts in collecting 255 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory in the main folder! If you use our data, please cite the paper:
+You might benefit from our efforts in collecting 255 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory to the main folder in preparation.R! If you use our data, please cite the paper:
 
 "put citation here"

@@ -5,7 +5,7 @@ rm(list = ls())
 setwd("C:/Data/Dropbox/Meike/MA/new submission/resubmission/CrossCulturalChallengesTPB")
 
 # each study is a matrix, that is printed on 12 rows
-data<-read.table("input/meta analysis_study_2020_R.txt", sep=";",header=F) 
+data<-read.table("input/MASEM_study_2020_R.txt", sep=";",header=F) 
 colnames(data) <- c("ID","label","Country","N","alpha","EC","B","IB","WTP","ATT","PBC","PN","SN","KN","F","H","PB")
 
 
