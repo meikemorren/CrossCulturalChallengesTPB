@@ -2,10 +2,13 @@
 ####################### read data from excel into long file ################################
 ############################################################################################
 rm(list = ls())
-setwd("C:/Data/Dropbox/Meike/MA/new submission/resubmission/CrossCulturalChallengesTPB")
+install.packages("devtools") # to be able to upload changes to github
+library(devtools)
+
 
 # each study is a matrix, that is printed on 12 rows
-data<-read.table("input/MASEM_study_2020_R.txt", sep=";",header=F) 
+setwd("C:/Data/Dropbox/Meike/MA/new submission/resubmission/CrossCulturalChallengesTPB")
+data<-read.table("input/MASEM_2020-longfile.txt", sep=";",header=F) 
 colnames(data) <- c("ID","label","Country","N","alpha","EC","B","IB","WTP","ATT","PBC","PN","SN","KN","F","H","PB")
 
 

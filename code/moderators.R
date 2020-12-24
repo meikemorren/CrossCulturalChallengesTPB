@@ -162,5 +162,4 @@ rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB",
                         "Hofstede","globe")))
 
 # to use shiny app by Suzanne Jak et al (2020)
-write.table(WIDEdat,"output/data.txt",sep=";")
-getwd()
+write.table(WIDEdat,"input/MASEM_2020-widefile.txt",sep=";")

@@ -62,12 +62,14 @@ M0 <- create.vechsR(A0=RAM2$A,S0=RAM2$S) # Mmatrix
 T0 <- create.Tau2(RAM=RAM2, RE.type="Diag")#Tmatrix
 model2_fit0  <- osmasem(model.name="No Moderator", Mmatrix=M0, Tmatrix=T0, data=dat2, suppressWarnings=FALSE)
 
+
 # Model 3
 RAM3 <- lavaan2RAM(model3, obs.variables=c("B","IB","ATT", "PBC","PN","SN"))
 diag(RAM3$S)[c(5:6)] <- 1 # set variances of independent variables to 1
 M0 <- create.vechsR(A0=RAM3$A,S0=RAM3$S) # Mmatrix
 T0 <- create.Tau2(RAM=RAM3, RE.type="Diag")#Tmatrix
 model3_fit0  <- osmasem(model.name="No Moderator", Mmatrix=M0, Tmatrix=T0, data=dat2, suppressWarnings=FALSE)
+
 
 # Model 4
 RAM4 <- lavaan2RAM(model4, obs.variables=c("B","IB","ATT", "PBC","PN","SN"))
@@ -76,7 +78,23 @@ M0 <- create.vechsR(A0=RAM4$A,S0=RAM4$S) # Mmatrix
 T0 <- create.Tau2(RAM=RAM4, RE.type="Diag") #Tmatrix
 model4_fit0  <- osmasem(model.name="No Moderator", Mmatrix=M0, Tmatrix=T0, data=dat2, suppressWarnings=FALSE)
 
-#----------------------------------------------- TABLE ----------------------------------------------------------#
+#------------------------------------------- explained variance -----------------------------------------------------#
+
+SSE <- model1_fit0$mx.fit$Smatrix$result
+SSE <- SSE[!SSE==0 | SSE == 1]
+summary(SSE)
+SSE <- model2_fit0$mx.fit$Smatrix$result
+SSE <- SSE[!SSE==0 | SSE == 1]
+summary(SSE)
+SSE <- model3_fit0$mx.fit$Smatrix$result
+SSE <- SSE[!SSE==0 | SSE == 1]
+summary(SSE)
+SSE <- model4_fit0$mx.fit$Smatrix$result
+SSE <- SSE[!SSE==0 | SSE == 1]
+summary(SSE)
+
+
+#----------------------------------------------- TABLE 4 ----------------------------------------------------------#
 
 fit_model1<-summary(model1_fit0, fitIndices = TRUE)
 fit_model2<-summary(model2_fit0, fitIndices = TRUE)
@@ -91,7 +109,7 @@ modelfit[1,] <- round(c(unlist(fit_model1[c("Chi","ChiDoF","RMSEA","TLI","CFI","
 modelfit[2,] <- round(c(unlist(fit_model2[c("Chi","ChiDoF","RMSEA","TLI","CFI","BIC.Mx")]),osmasemSRMR(model2_fit0)),3)
 modelfit[3,] <- round(c(unlist(fit_model3[c("Chi","ChiDoF","RMSEA","TLI","CFI","BIC.Mx")]),osmasemSRMR(model3_fit0)),3)
 modelfit[4,] <- round(c(unlist(fit_model4[c("Chi","ChiDoF","RMSEA","TLI","CFI","BIC.Mx")]),osmasemSRMR(model4_fit0)),3)
-write.csv(modelfit, 'output/tables/table3.csv')
+write.csv(modelfit, 'output/tables/table4.csv')
 
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","Hofstede","globe",
                         "dataList","dataList_TPB","RAM1","RAM2","RAM3","RAM4",

@@ -89,7 +89,7 @@ dataList <- createList(WIDEdat, varnames, values)
 ### inspect
 summary(as.numeric(dataList$IC)) # mean 51.54 IC score
 sum(dataList$N) # 130354
-length(dataList$Data) # number of matrixes 255
+length(dataList$Data) # number of matrices 255
 length(unique(names(dataList$Data))) # 233 articles
 nrow(table(dataList$Country)) # number of countries 50
 

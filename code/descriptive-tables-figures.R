@@ -32,74 +32,63 @@ for(r in 1:5){
 write.csv(tab, "output/tables/table1.csv")
 
 #------------------------------ TABLE 2 --------------------------------------------#
-table2<-cbind(tapply(WIDEdat$N, 
+table<-cbind(tapply(WIDEdat$N, 
              factor(WIDEdat$Country), sum),
       table(factor(WIDEdat$Country)))
-rownames(table2)<-paste(rownames(table2)," (",table(factor(WIDEdat$Country)),")", sep = "")
+rownames(table)<-paste(rownames(table)," (",table(factor(WIDEdat$Country)),")", sep = "")
 
 values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
 for(v in values){
   val<-tapply(as.numeric(WIDEdat[,v]), 
               factor(WIDEdat$Country), mean)
   print(val)
-  table2<-cbind(table2, round(val,2))
+  table<-cbind(table, round(val,2))
 }
-colnames(table2)[3:ncol(table2)]<- values
+colnames(table)[3:ncol(table)]<- values
 
-write.csv(table2, 'output/tables/table2.csv')
+write.csv(table, 'output/tables/table2.csv')
 
-#------------------------------ FIGURE 4 --------------------------------------------#
-library(ggplot2)
-library(grid)
+#------------------------------ TABLE 3 --------------------------------------------#
 
 # make sure to run moderators.R first!
 df<-merge(Hofstede,globe, by=intersect(names(Hofstede), names(globe)), all=TRUE)
-
-# correlations between values
-values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
-cor(na.omit(df[,values]))
 
 # change names 
 df[df$Country=="Germany (EAST)","Country"] <- "Germany"
 df[df$Country=="French Switzerland","Country"] <- "Switzerland"
 df[df$Country=="South Africa (Black Sample)","Country"] <- "South Africa"
 df[df$Country=="South Africa (White Sample)","Country"] <- "South Africa"
+df <- aggregate(df[,values],list(df$Country), mean, na.rm=T)
+colnames(df)[1]<-"Country"
 
-# coloring whether in study
+# exclude groups of countries
+df <- df[!c(df$Country %in% c("West Africa", "Arabic countries","East Africa","Yugoslavia")),]
+
+# included in our study
 df$Included <-"no"
 df[which(df$Country %in% WIDEdat$Country),"Included"]<- "yes"
+cor.test(df$IC, df$ingr_p)
+cor.test(df$IC, df$inst_p)
 
-# plots
-tiff("output/figures/values-plots.tiff", width = 10, height = 10, 
-     units = 'in', res = 300)
+# correlations between values
+values <- c("IC","inst_v","ingr_v","inst_p","ingr_p")
 
-p<-ggplot(df,aes(as.numeric(ingr_v), IC, colour = Included))+
-  ggtitle("Ingroup values") + 
-  theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
-  theme(text=element_text(size=12,  family="serif"))+
-  geom_point()
-q<-ggplot(df,aes(as.numeric(ingr_p), IC, colour = factor(Included)))+
-  ggtitle("Ingroup practices")  + 
-  theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
-  theme(text=element_text(size=12,  family="serif"))+
-  geom_point()
-r<-ggplot(df,aes(as.numeric(inst_v), IC, colour = factor(Included)))+
-  ggtitle("Institutional values") + 
-  theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
-  theme(text=element_text(size=12,  family="serif"))+
-  geom_point()
-s<-ggplot(df,aes(as.numeric(inst_p), IC, colour = factor(Included)))+
-  ggtitle("Institutional practices") + 
-  theme(legend.position="none", axis.title.x=element_blank(), axis.title.y=element_blank())+
-  theme(text=element_text(size=12,  family="serif"))+
-  geom_point()
+tab1<-matrix(0,5,5)
+tab1[,1]<- c(cor(na.omit(df[,values]))[1:5])
+tab1[,2]<- c(0,cor(na.omit(df[,values]))[7:10])
+tab1[,3]<- c(0,0,cor(na.omit(df[,values]))[13:15])
+tab1[,4]<- c(0,0,0,cor(na.omit(df[,values]))[19:20])
+tab1[,5]<- c(0,0,0,0,1)
+tab1
 
-# create grid
-grid.arrange(p,q,r,s, ncol=2,nrow=2,
-             widths=c(2.5,2.5),
-             heights=c(2.4,2.4),
-             left=textGrob("Collectivism - Individualism (Hofstede)", rot=90, 
-                           gp=gpar(fontsize=16, fontfamily="serif")))
-dev.off()
+# included in study
+tab<-matrix(0,5,5)
+colnames(tab)<-c("IC","inst_v","ingr_v","inst_p","ingr_p")
+tab[1,]<- c(cor(na.omit(df[df$Included=="yes",values]))[1:5])
+tab[2,]<- c(tab1[2,1],cor(na.omit(df[df$Included=="yes",values]))[7:10])
+tab[3,]<- c(tab1[3,1:2],cor(na.omit(df[df$Included=="yes",values]))[13:15])
+tab[4,]<- c(tab1[4,1:3],cor(na.omit(df[df$Included=="yes",values]))[19:20])
+tab[5,]<- c(tab1[5,1:4],1)
+write.table(tab, "output/tables/table3.txt", sep=";")
 
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))

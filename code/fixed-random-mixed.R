@@ -47,7 +47,13 @@ colnames(results) <- c(colnames(results)[1:8],colnames_m)
 round(results[c(1,3,6:9),],3)
 write.csv(results,"output/tables/fixed-mixed.csv")
 
-
+# for presentation:
+library(xtable)
+colnames(results)[21:28] <-c("int values", "z", "beta values","z",
+                             "int practices","z","beta practices","z")
+xtable(round(results[c(1,3,6:9),21:28],3), 
+       align=c("|c","|c","|c","|c","|c","|c","|c","|c","|c"),
+       caption= "Mixed effects model of in-group collectivist values")
 ####################################################################################
 #############################  publication bias ####################################
 ####################################################################################
