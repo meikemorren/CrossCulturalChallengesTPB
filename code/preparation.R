@@ -28,7 +28,6 @@ length(unique(data$Country)) # 50
 ######################################## long to wide file  ##############################################################
 ########################################################################################################################
 # convert data to wide format (= one row per study)
-# Note that the alpha is not included (as this is a variable specific and not study specific variable)
 
 # create column names for the correlations
 corrnames <- function(varnames){
@@ -51,7 +50,7 @@ corrnames <- function(varnames){
   return(names.corr)
 }
 
-# create wide file, with each correlation being in its own column
+# create wide file, with each correlation in a column
 long2wide <- function(data, varnames) 
 {
   Ncorr <- (length(varnames)*(length(varnames)-1))/2
@@ -88,7 +87,6 @@ for(i in seq(1, nrow(WIDEdat))) if(15 == sum(is.na(WIDEdat[i,5:ncol(WIDEdat)])))
 length(unique(WIDEdat$Country)) # 50
 sum(WIDEdat$N, na.rm=T) # 130354
 nrow(WIDEdat) # 255
-length(unique(WIDEdat$label)) # 231 voor 5 TPB variables + PN
 
 # For classical TPB (without personal norms) we have to create another datafile:
 varnames <- c("B","IB","ATT","PBC","SN")
@@ -106,7 +104,6 @@ WIDEdat_TPB<-WIDEdat_TPB[-missings,] # delete missings
 unique(WIDEdat_TPB$Country) # 50
 sum(WIDEdat_TPB$N, na.rm=T) # 121220
 nrow(WIDEdat_TPB) # 246
-length(unique(WIDEdat_TPB$label)) # 222 voor 5 TPB variables
 
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB",
                         "corrnames","varnames")))

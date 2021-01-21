@@ -158,7 +158,6 @@ fit2ingr_p.anova<-anova(model2_ingr_p,model2_fit0)
 fit3ingr_p.anova<-anova(model3_ingr_p,model3_fit0)
 fit4ingr_p.anova<-anova(model4_ingr_p,model4_fit0)
 
-
 #----------------------------------------------- TABLE 5 ----------------------------------------------------------#
 modelfit <- as.data.frame(matrix(0,nrow=4,ncol=11))
 rownames(modelfit) <- c("Classical TPB",

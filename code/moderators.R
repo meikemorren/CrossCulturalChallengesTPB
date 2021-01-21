@@ -3,14 +3,14 @@
 #############################  hofstede ####################################################
 ############################################################################################
 Hofstede <- as.data.frame(read.table("input/Hofstede.txt", sep=";",quote="",header=T)) 
-
-### small adjustments
 Hofstede$Country<-as.character(Hofstede$Country)
-# added, estimated by hofstede
+
+# The following countriesa are added, indices are estimated by hofstede
 Hofstede<-rbind(Hofstede,c("Bosnia and Herzegovina",90,22,48,87,70,44)) 
 Hofstede[Hofstede$Country=="Qatar",2:5] <-c(93, 25, 55, 80) 
 Hofstede[Hofstede$Country=="Bangladesh",2:5] <-c(93, 25, 55, 80) 
 
+# make numeric
 Hofstede[,2:7]<-apply(Hofstede[,2:7], 2, as.numeric)
 
 # adjust country names to the ones we already have:
@@ -21,7 +21,6 @@ Hofstede$Country[Hofstede$Country=="United States"] <- "USA"
 Hofstede$Country[Hofstede$Country=="Fiji"] <- "Fiji Islands"
 
 # check missing values
-# (2 missing: bahrain, uganda)
 WIDEdat[(WIDEdat[,"Country"] %in% Hofstede[,"Country"]==FALSE),]
 
 # include hofstede values in the wide datafile:
@@ -39,11 +38,9 @@ for(c in unique(WIDEdat$Country)){
 # check missing values
 WIDEdat$Country[is.na(WIDEdat$IC)] # Cyprus & Uganda & Bahrain 
 
-# impute missing values using neighboring countries
-WIDEdat[WIDEdat$Country=="Uganda",20:ncol(WIDEdat)] <- Hofstede[Hofstede$Country=="East Africa",2:ncol(Hofstede)]
-# uganda is part of east africa
-WIDEdat[WIDEdat$Country=="Bahrain",20:ncol(WIDEdat)] <- Hofstede[Hofstede$Country=="Qatar",2:ncol(Hofstede)]
-# neighbouring countries of Bharain (Saudi-Arabia, Qatar, and United Arab Emirates) all have individualism of 25
+# impute missing values 
+WIDEdat[WIDEdat$Country=="Uganda",20:ncol(WIDEdat)] <- Hofstede[Hofstede$Country=="East Africa",2:ncol(Hofstede)]# uganda is part of east africa
+WIDEdat[WIDEdat$Country=="Bahrain",20:ncol(WIDEdat)] <- Hofstede[Hofstede$Country=="Qatar",2:ncol(Hofstede)] # neighboring countries of Bharain (Saudi-Arabia, Qatar, and United Arab Emirates) all have individualism of 25
 WIDEdat[WIDEdat$Country=="Cyprus",20:ncol(WIDEdat)] <- Hofstede[Hofstede$Country=="Greece",2:ncol(Hofstede)]
 
 #############################################################################################
@@ -63,7 +60,6 @@ globe$Country[globe$Country=="IRAN"] <- "Iran"
 globe$Country[globe$Country=="Germany (WEST)"] <- "Germany" 
 
 # check missing values
-# (16 missing: bahrain, uganda)
 unique(WIDEdat$Country[(WIDEdat[,"Country"] %in% globe[,"Country"]==FALSE)])
 
 # impute missing values
@@ -139,12 +135,12 @@ for(c in unique(WIDEdat$Country)){
 }  
 
 ## EXCEPTIONS
-# Switzerland, Germany, Canada, South Africa have two GLOBE values depending on the population
+# Switzerland, Germany, Canada, South Africa have two GLOBE values depending on the region
 # The average is taken when reported as such in article (otherwise assumed):
 # Germany: 2, 77 (not reported), 127 (not reported), 135 (not reported)
 # Switzerland: 124 
-# South africa (several urban regions, 67% black): 122
-# Canada (english): 75, 128, 136
+# South Africa (several urban regions, 67% black): 122
+# Canada (English): 75, 128, 136
 WIDEdat[WIDEdat$ID==2,26:43]  <-apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2,mean)
 WIDEdat[WIDEdat$ID==77,26:43] <-apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2,mean)
 WIDEdat[WIDEdat$ID==127,26:43]<-apply(globe[grepl(tolower("Germany"),tolower(globe$Country)),2:ncol(globe)], 2,mean)
