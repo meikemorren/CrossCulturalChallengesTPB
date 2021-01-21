@@ -3,10 +3,8 @@
 #############################  bivariate analyses ##################################
 ####################################################################################
 # fixed & random effects model per correlation
-# we use metaSEM
 library(metaSEM)
 
-# to make inspection easier, we create a table
 results<-as.data.frame(matrix(0,nrow=length(5:19), ncol=8))
 
 for(i in 5:19){
@@ -38,7 +36,7 @@ for(m in mod){
   k <- k + 4
 }
 
-# make nice
+# clean up
 colnames_m <- NULL
 for(m in mod) colnames_m <- c(colnames_m,paste(m,"a"),"z",paste(m,"b"), "z")
 rownames(results) <- colnames(WIDEdat)[5:19]
@@ -47,31 +45,32 @@ colnames(results) <- c(colnames(results)[1:8],colnames_m)
 round(results[c(1,3,6:9),],3)
 write.csv(results,"output/tables/fixed-mixed.csv")
 
-# for presentation:
+# present results
 library(xtable)
 colnames(results)[21:28] <-c("int values", "z", "beta values","z",
                              "int practices","z","beta practices","z")
 xtable(round(results[c(1,3,6:9),21:28],3), 
        align=c("|c","|c","|c","|c","|c","|c","|c","|c","|c"),
        caption= "Mixed effects model of in-group collectivist values")
+
 ####################################################################################
 #############################  publication bias ####################################
 ####################################################################################
 library(metafor)
-
 tiff("output/figures/funnel-plots.tiff", width = 10, height = 10, units = 'in', res = 300)
 
 ### set up 2x2 array for plotting
 par(mfrow=c(2,3), tcl=-0.5, family="serif", mai=c(0.8,0.5,0.5,0.3))
 
-# these will be the labels for the plots
+# labels for the plots
 full.corr <- c("Behavior - Intention","Behavior - PBC","Intention - Attitude",
                "Intention - PBC","Intention - Personal Norms","Intention - Subjective Norms")
-name<-1 # this is how we assign a label to a plot
+
 
 # standard error of within study variance
 sei <- 1/sqrt((WIDEdat$N-3)) # s.e. of fisher z transformed correlation  (see eggers 2005)
 
+id<-1 
 for(i in c(5,7,10:13)){
   
   ### fit fixed-effects model
@@ -85,14 +84,14 @@ for(i in c(5,7,10:13)){
 
   ### draw funnel plots
   funnel(res, ylab="(inverted) Standard Error",
-         main=paste(full.corr[name],"\nEgger's test = ", 
+         main=paste(full.corr[id],"\nEgger's test = ", 
               round(summary(eggerstest)$coef[2,1],3),", SE = ", 
               round(summary(eggerstest)$coef[2,2],3), sep=""),
          cex.main=1.5,cex.axis=1.5,
          level=c(90, 95, 99), 
          shade=c("white", "gray55", "gray75"), 
          xlab="Fisher Z Transformed Correlation Coefficient")
-  name <- name+1
+  id <- id+1
 }
 
 dev.off()
