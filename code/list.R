@@ -116,7 +116,7 @@ dataList_TPB <- createList(WIDEdat_TPB, c("B","IB","ATT","PBC","SN"), values)
 
 ### inspect
 sum(dataList_TPB$N) # 121220
-length(dataList_TPB$Data) # number of matrixes 246
+length(dataList_TPB$Data) # number of matrices 246
 unique(names(dataList_TPB$Data)) # 222 articles
 nrow(table(dataList_TPB$Country)) # number of countries 50
 

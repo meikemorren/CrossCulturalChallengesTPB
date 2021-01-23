@@ -17,16 +17,16 @@ Note that data.txt can be analyzed using the newly-developed, user-friendly shin
 ### Code
 
 In the code folder you can find all the code used to obtain the figures and tables in the paper. 
-To inspect the datafile MASEM_study_2020_R.txt, run the file preparation.R first. Next, run moderators.R to add the moderator variables (i.e. Individualism-Collectivism dimensions). To conduct the bivariate analyses, go to fixed-random-mixed.R. This file also contains the tests for publication biases (e.g. funnel plots and Egger's test). Before you start the MASEM analyses, the data needs to be reshaped into a list, see list.R. You can conduct the MASEM analysis via the file onestage-masem.R. Additionally we conduct the moderator analysis in onestage-masem-mods.R. 
+To inspect the datafile MASEM_study_2020_R.txt, run the file preparation.R first. Next, run moderators.R to add the moderator variables (i.e. Individualism-Collectivism dimensions). The bivariate analyses can be inspected by fixed-random-mixed.R. This file also contains the tests for publication biases (e.g. funnel plots and Egger's test). Before you start the MASEM analyses, the data needs to be reshaped into a list, see list.R. You can conduct the MASEM analysis via the file onestage-masem.R. Additionally we conduct the moderator analysis in onestage-masem-mods.R. 
 
 - **preparation.R** : reads in file, creates a wide format (each study one line), and adds labels to the correlations
 - **moderators.R** : reads in files of moderator values, imputes missing values, and creates a wide format dataframe
 - **fixed-random-mixed.R** : performs bivariate analyses and inspects publication bias 
 - **list.R** : creates a list that can be used as input for MASEM analyses
-- **onestage-masem.R** : estimates the onestage MASEM and creates table 3
-- **onestage-masem-mods.R** : adds moderator analyses and creates tables 4 and 5
+- **onestage-masem.R** : estimates the onestage MASEM and creates table 4
+- **onestage-masem-mods.R** : adds moderator analyses and creates tables 5 and 6
 
-We also added the code in which we created the descriptive tables 1 and 2 and figure 4.
+We also added the code in which we created the descriptive tables 1, 2, and 3 and figure 3. Make sure that you first run preparation.R, moderators.R, and list.R.
 
 ### Output
 

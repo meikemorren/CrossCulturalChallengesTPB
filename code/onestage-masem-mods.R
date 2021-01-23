@@ -200,8 +200,9 @@ model2_fit0.coef<-summary(model2_fit0)
 fit2IC.coef     <-summary(model2_IC)
 fit2inst_v.coef <-summary(model2_inst_v)
 fit2ingr_p.coef <-summary(model2_ingr_p)
+fit2ingr_v.coef <-summary(model2_ingr_v)
 
-modelfit <- as.data.frame(matrix(0,nrow=9,ncol=8))
+modelfit <- as.data.frame(matrix(0,nrow=9,ncol=10))
 parid1<-14:15
 rownames(modelfit) <- c(fit2inst_v.coef$parameters$name[c(1:7,parid1)])
 
@@ -210,13 +211,15 @@ modelfit[1:7,1:2] <- c(round(model2_fit0.coef$parameters$Estimate[1:7],3),round(
 modelfit[1:7,3:4] <- c(round(fit2IC.coef$parameters$Estimate[1:7],3),round(fit2IC.coef$parameters$`z value`[1:7],2))
 modelfit[1:7,5:6] <- c(round(fit2inst_v.coef$parameters$Estimate[1:7],3),round(fit2inst_v.coef$parameters$`z value`[1:7],2))
 modelfit[1:7,7:8] <- c(round(fit2ingr_p.coef$parameters$Estimate[1:7],3),round(fit2ingr_p.coef$parameters$`z value`[1:7],2))
+modelfit[1:7,9:10] <- c(round(fit2ingr_v.coef$parameters$Estimate[1:7],3),round(fit2ingr_v.coef$parameters$`z value`[1:7],2))
 
 # moderator efects
 modelfit[8:9,1:2] <- NA
 modelfit[8:9,3:4] <- c(round(fit2IC.coef$parameters$Estimate[parid1],3),round(fit2IC.coef$parameters$`z value`[parid1],2))
 modelfit[8:9,5:6] <- c(round(fit2inst_v.coef$parameters$Estimate[parid1],3),round(fit2inst_v.coef$parameters$`z value`[parid1],2))
 modelfit[8:9,7:8] <- c(round(fit2ingr_p.coef$parameters$Estimate[parid1],3),round(fit2ingr_p.coef$parameters$`z value`[parid1],2))
+modelfit[8:9,9:10] <- c(round(fit2ingr_v.coef$parameters$Estimate[parid1],3),round(fit2ingr_v.coef$parameters$`z value`[parid1],2))
 
 write.csv(modelfit, 'output/tables/table6.csv')
 
-rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))
+rm(list=ls())

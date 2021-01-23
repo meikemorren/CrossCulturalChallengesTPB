@@ -1,3 +1,4 @@
+# first run preparation.R, moderators.R, list.R
 ####################################################################################
 #############################  tables & figures ####################################
 ####################################################################################
@@ -50,7 +51,6 @@ write.csv(table, 'output/tables/table2.csv')
 
 #------------------------------ TABLE 3 --------------------------------------------#
 
-# make sure to run moderators.R first!
 df<-merge(Hofstede,globe, by=intersect(names(Hofstede), names(globe)), all=TRUE)
 
 # change names 
@@ -89,6 +89,6 @@ tab[2,]<- c(tab1[2,1],cor(na.omit(df[df$Included=="yes",values]))[7:10])
 tab[3,]<- c(tab1[3,1:2],cor(na.omit(df[df$Included=="yes",values]))[13:15])
 tab[4,]<- c(tab1[4,1:3],cor(na.omit(df[df$Included=="yes",values]))[19:20])
 tab[5,]<- c(tab1[5,1:4],1)
-write.table(tab, "output/tables/table3.txt", sep=";")
+write.table(tab, "output/tables/table3.csv")
 
 rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))

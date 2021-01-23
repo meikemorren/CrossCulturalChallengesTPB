@@ -45,14 +45,6 @@ colnames(results) <- c(colnames(results)[1:8],colnames_m)
 round(results[c(1,3,6:9),],3)
 write.csv(results,"output/tables/fixed-mixed.csv")
 
-# present results
-library(xtable)
-colnames(results)[21:28] <-c("int values", "z", "beta values","z",
-                             "int practices","z","beta practices","z")
-xtable(round(results[c(1,3,6:9),21:28],3), 
-       align=c("|c","|c","|c","|c","|c","|c","|c","|c","|c"),
-       caption= "Mixed effects model of in-group collectivist values")
-
 ####################################################################################
 #############################  publication bias ####################################
 ####################################################################################
@@ -65,7 +57,6 @@ par(mfrow=c(2,3), tcl=-0.5, family="serif", mai=c(0.8,0.5,0.5,0.3))
 # labels for the plots
 full.corr <- c("Behavior - Intention","Behavior - PBC","Intention - Attitude",
                "Intention - PBC","Intention - Personal Norms","Intention - Subjective Norms")
-
 
 # standard error of within study variance
 sei <- 1/sqrt((WIDEdat$N-3)) # s.e. of fisher z transformed correlation  (see eggers 2005)
@@ -96,4 +87,5 @@ for(i in c(5,7,10:13)){
 
 dev.off()
 
-rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB","dataList","dataList_TPB")))
+rm(list=setdiff(ls(), c("WIDEdat","WIDEdat_TPB",
+                        "Hofstede","globe","corrnames","varnames")))
