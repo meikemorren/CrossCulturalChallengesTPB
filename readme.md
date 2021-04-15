@@ -11,15 +11,15 @@ Additionally, we have added personal norms to the framework to explore how they 
 The input folder contains:
 - Hofstede values
 - GLOBE values
-- The matrices (MASEM_study_2020_R.txt)
-- The additional information on the studies (MASEM_study_2020_R_meta.txt)
+- The matrices (MASEM_2020.txt)
+- The additional information on the studies (MASEM_2020-meta.txt)
 
-Note that data.txt can be analyzed using the newly-developed, user-friendly shiny app: Jak, S., Li, H., Kolbe, L., & Cheung, M. W. (2020, June 24). webMASEM: a shiny-app for one-stage MASEM. Retrieved from osf.io/wh6d3
+Note that MASEM_2020-widefile.txt can be analyzed using the newly-developed, user-friendly shiny app: Jak, S., Li, H., Kolbe, L., & Cheung, M. W. (2020, June 24). webMASEM: a shiny-app for one-stage MASEM. Retrieved from osf.io/wh6d3
 
 ### Code
 
 In the code folder you can find all the code used to obtain the figures and tables in the paper. 
-To inspect the datafile MASEM_study_2020_R.txt, run the file preparation.R first. Next, run moderators.R to add the moderator variables (i.e. Individualism-Collectivism dimensions). The bivariate analyses can be inspected by fixed-random-mixed.R. This file also contains the tests for publication biases (e.g. funnel plots and Egger's test). Before you start the MASEM analyses, the data needs to be reshaped into a list, see list.R. You can conduct the MASEM analysis via the file onestage-masem.R. Additionally we conduct the moderator analysis in onestage-masem-mods.R. 
+To inspect the datafile MASEM_2020-widefile.txt, run the file preparation.R first. Next, run moderators.R to add the moderator variables (i.e. Individualism-Collectivism dimensions). The bivariate analyses can be inspected by fixed-random-mixed.R. This file also contains the tests for publication biases (e.g. funnel plots and Egger's test). Before you start the MASEM analyses, the data needs to be reshaped into a list, see list.R. You can conduct the MASEM analysis via the file onestage-masem.R. Additionally we conduct the moderator analysis in onestage-masem-mods.R. 
 
 - **preparation.R** : reads in file, creates a wide format (each study one line), and adds labels to the correlations
 - **moderators.R** : reads in files of moderator values, imputes missing values, and creates a wide format dataframe
