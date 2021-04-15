@@ -36,4 +36,4 @@ The output folder contains two subfolders: Tables and Figures. If you run the co
 
 You might benefit from our efforts in collecting 255 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory to the main folder in preparation.R! 
 
-Special thanks to Oda Marie Liodden who has done an excellent job in collecting and coding articles published since 2016. 
+Special thanks to **Oda Marie Liodden** who has done an excellent job in collecting and coding articles published since 2016. 
