@@ -1,6 +1,8 @@
 # Data and Code of Meta Analysis 
 
-We conducted a meta-analysis on Theory of Planned Behavior (TPB) in the field of environmentally friendly behavior. Additionally, we have added personal norms to the framework to explore how they should be integrated with TPB. During the data collection, we tried to include studies from as many countries as possible so that we could make valid cross-cultural comparisons. This led to a dataset of 255 samples (reported in 231 articles) from 50 countries.
+Amir Grinstein and myself conducted a meta-analysis on Theory of Planned Behavior (TPB) in the field of environmentally friendly behavior which you can find here: https://doi.org/10.1016/j.jenvp.2021.101593
+
+Additionally, we have added personal norms to the framework to explore how they should be integrated with TPB. During the data collection, we tried to include studies from as many countries as possible so that we could make valid cross-cultural comparisons. This led to a dataset of 255 samples (reported in 231 articles) from 50 countries.
 
 ## Folders
 
@@ -35,3 +37,5 @@ The output folder contains two subfolders: Tables and Figures. If you run the co
 ## How to use?
 
 You might benefit from our efforts in collecting 255 matrices in which two or more TPB variables (including personal norms) are related to one another. If you download the entire repository, you should be able to run all files, and obtain the tables and results as described in our paper. Please mind that the reading and writing of files make use of relative paths. So first set your working directory to the main folder in preparation.R! 
+
+Special thanks to Oda Marie Liodden who has done an excellent job in collecting and coding articles published since 2016. 
