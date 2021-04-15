@@ -4,8 +4,6 @@ Amir Grinstein and myself conducted a meta-analysis on Theory of Planned Behavio
 
 Additionally, we have added personal norms to the framework to explore how they should be integrated with TPB. During the data collection, we tried to include studies from as many countries as possible so that we could make valid cross-cultural comparisons. This led to a dataset of 255 samples (reported in 231 articles) from 50 countries.
 
-## Folders
-
 ### Input
 
 The input folder contains:
